@@ -55,20 +55,24 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _angular = __webpack_require__(2);
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _app = __webpack_require__(4);
+	var _sups = __webpack_require__(4);
+	
+	var _sups2 = _interopRequireDefault(_sups);
+	
+	var _app = __webpack_require__(11);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var AppModule = _angular2.default.module('app', []).component('app', _app2.default);
+	var AppModule = _angular2.default.module('app', [_sups2.default.name]).component('app', _app2.default);
 	
 	exports.default = AppModule;
 
@@ -31860,14 +31864,148 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _angular = __webpack_require__(2);
+	
+	var _angular2 = _interopRequireDefault(_angular);
+	
+	var _supsPage = __webpack_require__(5);
+	
+	var _supsPage2 = _interopRequireDefault(_supsPage);
+	
+	var _supsItem = __webpack_require__(8);
+	
+	var _supsItem2 = _interopRequireDefault(_supsItem);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var SupsModule = _angular2.default.module('sups', []).component('supsPage', _supsPage2.default).component('supsItem', _supsItem2.default);
+	
+	exports.default = SupsModule;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _supsPage = __webpack_require__(6);
+	
+	var _supsPage2 = _interopRequireDefault(_supsPage);
+	
+	var _supsPage3 = __webpack_require__(7);
+	
+	var _supsPage4 = _interopRequireDefault(_supsPage3);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var supsPageComponent = {
+		template: _supsPage2.default,
+		controller: _supsPage4.default,
+		controllerAs: 'supsPageCtrl'
+	};
+	
+	exports.default = supsPageComponent;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"row\">\n    <div class=\"col-md-4\">\n        <div class=\"jumbotron\">\n            <h1>Sup</h1>\n            <p class=\"lead\">\n                View the latest sups from around the world or add yours to the mix below.\n            </p>\n        </div>\n    </div>\n    <div class=\"col-md-8\">\n        <h2>\n            Latest Sups\n            <hr>\n        </h2>\n        <sups-item sup=\"supsPageCtrl.sup\"/>\n    </div>\n</div>\n"
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	function SupsPageController() {
+		var ctrl = this;
+	
+		ctrl.sup = {
+			text: 'Hey from sups page',
+			created_date: new Date(Date.now())
+		};
+	}
+	
+	exports.default = SupsPageController;
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _supsItem = __webpack_require__(9);
+	
+	var _supsItem2 = _interopRequireDefault(_supsItem);
+	
+	var _supsItem3 = __webpack_require__(10);
+	
+	var _supsItem4 = _interopRequireDefault(_supsItem3);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var supsItemComponent = {
+		template: _supsItem2.default,
+		bindings: {
+			sup: '<'
+		},
+		controller: _supsItem4.default,
+		controllerAs: 'supsItemCtrl'
+	};
+	
+	exports.default = supsItemComponent;
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"panel panel-default\">\n    <div class=\"panel-body\">\n        {{ supsItemCtrl.sup.text}}\n    </div>\n    <div class=\"panel-footer clearfix\">\n        <div class=\"pull-right\">\n            {{ supsItemCtrl.sup.created_date | date: 'medium'}}\n        </div>\n    </div>\n</div>"
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	function SupsItemController() {}
+	
+	exports.default = SupsItemController;
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	
-	var _app = __webpack_require__(5);
+	var _app = __webpack_require__(12);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	var _app3 = __webpack_require__(6);
+	var _app3 = __webpack_require__(13);
 	
 	var _app4 = _interopRequireDefault(_app3);
 	
@@ -31882,13 +32020,13 @@
 	exports.default = appComponent;
 
 /***/ },
-/* 5 */
+/* 12 */
 /***/ function(module, exports) {
 
-	module.exports = "<header>\n    <nav class=\"navbar navbar-inverse navbar-static-top\">\n        <div class=\"container-fluid\">\n            <div class=\"navbar-header\">\n                <span class=\"navbar-brand\">\n                    <i class=\"fa fa-thumbs-o-up\"></i> Django Seed\n                </span>\n            </div>\n        </div>\n    </nav>\n</header>\n<div class=\"container-fluid\">\n    <div class=\"row\">\n        <div class=\"col-md-4\">\n            <div class=\"jumbotron\">\n                <h1>Sup</h1>\n                <p class=\"lead\">\n                    View the latest sups from around the world or add yours to the mix below.\n                </p>\n            </div>\n        </div>\n        <div class=\"col-md-8\">\n            <h2>\n                Latest Sups\n                <hr>\n            </h2>\n            <div class=\"panel panel-default\">\n                <div class=\"panel-body\">\n                    This is a sup\n                </div>\n                <div class=\"panel-footer clearfix\">\n                    <div class=\"pull-right\">\n                        10/12/2016\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
+	module.exports = "<header>\n    <nav class=\"navbar navbar-inverse navbar-static-top\">\n        <div class=\"container-fluid\">\n            <div class=\"navbar-header\">\n                <span class=\"navbar-brand\">\n                    <i class=\"fa fa-thumbs-o-up\"></i> Django Seed\n                </span>\n            </div>\n        </div>\n    </nav>\n</header>\n<div class=\"container-fluid\">\n    <sups-page />     \n</div>"
 
 /***/ },
-/* 6 */
+/* 13 */
 /***/ function(module, exports) {
 
 	"use strict";
