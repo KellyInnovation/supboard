@@ -31891,7 +31891,9 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var SupsModule = _angular2.default.module('sups', ['ngResource']).factory('supsAPIService', _supsApi2.default).component('supsPage', _supsPage2.default).component('supsItem', _supsItem2.default).component('supsEdit', _supsEdit2.default);
+	var SupsModule = _angular2.default.module('sups', ['ngResource']).config(function ($resourceProvider) {
+		$resourceProvider.defaults.stripTrailingSlashes = false;
+	}).factory('supsAPIService', _supsApi2.default).component('supsPage', _supsPage2.default).component('supsItem', _supsItem2.default).component('supsEdit', _supsEdit2.default);
 	
 	exports.default = SupsModule;
 
@@ -32829,7 +32831,9 @@
 		$interval(getSups, 5000);
 	
 		ctrl.saveSup = function saveSup(editedSup) {
-			alert(editedSup.text);
+			supsAPIService.sups.save(editedSup).$promise.then(function (savedSup) {
+				ctrl.sups = [savedSup, ctrl.sups];
+			});
 		};
 	}
 	
