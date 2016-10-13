@@ -1,9 +1,10 @@
 
 function SupsEditController() {
 	const ctrl = this;
+	ctrl.editedSup = {};
 
 	ctrl.saveSup = function saveSup() {
-		ctrl.save();
+		ctrl.save({ editedSup: ctrl.editedSup });
 	};
 }
 
