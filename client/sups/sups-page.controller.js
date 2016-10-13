@@ -1,6 +1,7 @@
 
-function SupsPageController(supsAPIService, $interval) {
+function SupsPageController(supsAPIService, flashesService, $interval) {
 	const ctrl = this;
+	ctrl.editedSup = {};
 
 	function getSups() {
 		supsAPIService.sups.get().$promise.then((data)=> {
@@ -17,6 +18,8 @@ function SupsPageController(supsAPIService, $interval) {
 				savedSup,
 					ctrl.sups,
 			];
+			ctrl.editedSup = {};
+			flashesService.displayMessage('Sup Created!', 'success');
 		});
 	};
 }
