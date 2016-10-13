@@ -66,7 +66,7 @@
 	
 	var _sups2 = _interopRequireDefault(_sups);
 	
-	var _app = __webpack_require__(14);
+	var _app = __webpack_require__(17);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
@@ -31881,13 +31881,17 @@
 	
 	var _supsItem2 = _interopRequireDefault(_supsItem);
 	
-	var _supsApi = __webpack_require__(13);
+	var _supsEdit = __webpack_require__(13);
+	
+	var _supsEdit2 = _interopRequireDefault(_supsEdit);
+	
+	var _supsApi = __webpack_require__(16);
 	
 	var _supsApi2 = _interopRequireDefault(_supsApi);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var SupsModule = _angular2.default.module('sups', ['ngResource']).factory('supsAPIService', _supsApi2.default).component('supsPage', _supsPage2.default).component('supsItem', _supsItem2.default);
+	var SupsModule = _angular2.default.module('sups', ['ngResource']).factory('supsAPIService', _supsApi2.default).component('supsPage', _supsPage2.default).component('supsItem', _supsItem2.default).component('supsEdit', _supsEdit2.default);
 	
 	exports.default = SupsModule;
 
@@ -32800,13 +32804,13 @@
 /* 8 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"row\">\n    <div class=\"col-md-4\">\n        <div class=\"jumbotron\">\n            <h1>Sup</h1>\n            <p class=\"lead\">\n                View the latest sups from around the world or add yours to the mix below.\n            </p>\n        </div>\n    </div>\n    <div class=\"col-md-8\">\n        <h2>\n            Latest Sups\n            <hr>\n        </h2>\n        <sups-item ng-repeat=\"sup in supsPageCtrl.sups\" sup=\"sup\"/>\n    </div>\n</div>\n"
+	module.exports = "<div class=\"row\">\n    <div class=\"col-md-4\">\n        <div class=\"jumbotron\">\n            <h1>Sup</h1>\n            <p class=\"lead\">\n                View the latest sups from around the world or add yours to the mix below.\n            </p>\n            <sups-edit save=\"supsPageCtrl.saveSup()\" />\n        </div>\n    </div>\n    <div class=\"col-md-8\">\n        <h2>\n            Latest Sups\n            <hr>\n        </h2>\n        <sups-item ng-repeat=\"sup in supsPageCtrl.sups\" sup=\"sup\"/>\n    </div>\n</div>\n"
 
 /***/ },
 /* 9 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -32823,6 +32827,10 @@
 	
 		getSups();
 		$interval(getSups, 5000);
+	
+		ctrl.saveSup = function saveSup() {
+			alert('save sup');
+		};
 	}
 	
 	exports.default = SupsPageController;
@@ -32880,6 +32888,63 @@
 
 /***/ },
 /* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _supsEdit = __webpack_require__(14);
+	
+	var _supsEdit2 = _interopRequireDefault(_supsEdit);
+	
+	var _supsEdit3 = __webpack_require__(15);
+	
+	var _supsEdit4 = _interopRequireDefault(_supsEdit3);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var supsEditComponent = {
+		template: _supsEdit2.default,
+		bindings: {
+			save: '&'
+		},
+		controller: _supsEdit4.default,
+		controllerAs: 'supsEditCtrl'
+	};
+	
+	exports.default = supsEditComponent;
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+	module.exports = "<form ng-submit=\"supsEditCtrl.saveSup()\">\n\t<div class=\"form-group\">\n\t\t<label>\n\t\t\tSup text\n\t\t\t<textarea class=\"form-control\"></textarea>\n\t\t</label>\n\t</div>\n\t<button class=\"btn btn-primary\" type=\"submit\">\n\t\tSave sup\n\t</button>\n</form>"
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	function SupsEditController() {
+		var ctrl = this;
+	
+		ctrl.saveSup = function saveSup() {
+			ctrl.save();
+		};
+	}
+	
+	exports.default = SupsEditController;
+
+/***/ },
+/* 16 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32899,7 +32964,7 @@
 	exports.default = supsAPIService;
 
 /***/ },
-/* 14 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32908,11 +32973,11 @@
 	    value: true
 	});
 	
-	var _app = __webpack_require__(15);
+	var _app = __webpack_require__(18);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	var _app3 = __webpack_require__(16);
+	var _app3 = __webpack_require__(19);
 	
 	var _app4 = _interopRequireDefault(_app3);
 	
@@ -32927,13 +32992,13 @@
 	exports.default = appComponent;
 
 /***/ },
-/* 15 */
+/* 18 */
 /***/ function(module, exports) {
 
 	module.exports = "<header>\n    <nav class=\"navbar navbar-inverse navbar-static-top\">\n        <div class=\"container-fluid\">\n            <div class=\"navbar-header\">\n                <span class=\"navbar-brand\">\n                    <i class=\"fa fa-thumbs-o-up\"></i> Django Seed\n                </span>\n            </div>\n        </div>\n    </nav>\n</header>\n<div class=\"container-fluid\">\n    <sups-page />     \n</div>"
 
 /***/ },
-/* 16 */
+/* 19 */
 /***/ function(module, exports) {
 
 	"use strict";
