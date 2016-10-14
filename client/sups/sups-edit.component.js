@@ -5,8 +5,9 @@ import SupsEditController from './sups-edit.controller';
 const supsEditComponent = {
 	template, 
 	bindings: {
-		save: '&',
 		sup: '<',
+		save: '&',
+		cancel: '&?',
 	},
 	controller:  SupsEditController,
 	controllerAs: 'supsEditCtrl',
